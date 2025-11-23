@@ -51,7 +51,7 @@ class WordpressController extends Controller
 
             // إنشاء jobs
             for ($page = 1; $page <= $totalPages; $page++) {
-                $isLastBatch = ($page === $totalPages) && $syncDeleted; // الدفعة الأخيرة فقط إذا كان الحذف مفعل
+                $isLastBatch = ($page === $totalPages) && $syncDeleted; 
 
                 ProcessWordPressProductsBatch::dispatch($page, $productsPerPage, $isLastBatch)
                     ->delay(now()->addSeconds($page * $delayBetweenJobs));
